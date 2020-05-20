@@ -29,6 +29,15 @@ class PrviProzor extends MainFrame {
   pregledVozilaDugme.minimumSize = new Dimension(150, 50)
   pregledVozilaDugme.maximumSize = new Dimension(150, 50)
 
+  val pregledVozilaIstekDugme = Button("30 dana"){
+
+    val dodavanje = new ProvjeraProzor
+    dodavanje.visible = true
+  }
+  pregledVozilaIstekDugme.preferredSize = new Dimension(150, 50)
+  pregledVozilaIstekDugme.minimumSize = new Dimension(150, 50)
+  pregledVozilaIstekDugme.maximumSize = new Dimension(150, 50)
+
   val izlazDugme = Button("Izlaz"){
   System.exit(1)
   }
@@ -42,6 +51,8 @@ class PrviProzor extends MainFrame {
   panelGlavni.contents += unesiVoziloDugme
   panelGlavni.contents += Swing.VStrut(5)
   panelGlavni.contents += pregledVozilaDugme
+  panelGlavni.contents += Swing.VStrut(5)
+  panelGlavni.contents += pregledVozilaIstekDugme
   panelGlavni.contents += Swing.VStrut(5)
   panelGlavni.contents += izlazDugme
   panelGlavni.border = Swing.EmptyBorder(90, 100, 100, 100)

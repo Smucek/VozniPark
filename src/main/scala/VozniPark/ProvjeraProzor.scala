@@ -17,7 +17,9 @@ class ProvjeraProzor extends MainFrame {
       godinaProizvodnje = dijelovi(3), datumReg = dijelovi(4), datumIstekaReg = dijelovi(5))
   }
 
-  vozila.foreach { vozilo => vozilo.istekRegistracije}
+  vozila.filter(vozilo => vozilo.istekRegistracije)
+
+
 
 
 
