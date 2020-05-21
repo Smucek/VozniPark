@@ -16,7 +16,7 @@ class Vozilo (marka: String, model: String, kategorija: String, godinaProizvodnj
   def istekRegistracije: Boolean = {
 
     val uneseniDatumIstekaReg = datumIstekaRegVozila
-    val uneseniDatum = new SimpleDateFormat("dd.MM.YYYY").parse(uneseniDatumIstekaReg)
+    val uneseniDatum = new SimpleDateFormat("dd.MM.yyyy").parse(uneseniDatumIstekaReg)
 
     val trenutniDatumPlusMjesec = Calendar.getInstance()
     trenutniDatumPlusMjesec.add(Calendar.MONTH, 1)

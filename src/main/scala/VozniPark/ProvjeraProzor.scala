@@ -17,7 +17,12 @@ class ProvjeraProzor extends MainFrame {
       godinaProizvodnje = dijelovi(3), datumReg = dijelovi(4), datumIstekaReg = dijelovi(5))
   }
 
-  vozila.filter(vozilo => vozilo.istekRegistracije)
+  val spisakIsteka = vozila.filter { vozilo =>
+    vozilo.istekRegistracije
+  }
+
+
+
 
 
 
