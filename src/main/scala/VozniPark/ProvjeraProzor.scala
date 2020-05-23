@@ -1,7 +1,8 @@
 package VozniPark
 
 import scala.io.Source
-import scala.swing.{Dimension, MainFrame}
+import scala.swing.Font.{BoldItalic, Serif}
+import scala.swing.{BoxPanel, Button, Dimension, Font, MainFrame, Orientation, Swing, Table}
 
 class ProvjeraProzor extends MainFrame {
   title = "Pregled vozila kojima registracija istice u narednih 30 dana"
@@ -21,16 +22,35 @@ class ProvjeraProzor extends MainFrame {
     vozilo.istekRegistracije
   }
 
+  val koloneTabeleNaslov = Seq("Marka", "Model", "Kategorija", "Gp", "DatumReg", "DatumIstek")
+  val naslovi: Array[Array[Any]] = Array (
+    Array("MARKA", "MODEL", "KATEGORIJA", "GODINA PROIZVODNJE", "DATUM REGISTRACIJE", "ISTEK REGISTRACIJE"))
+  val tabelaNaslova = new Table (naslovi, koloneTabeleNaslov)
 
+  tabelaNaslova.font = Font (Serif, BoldItalic, 10)
 
+//  val spisak = spisakIsteka.map ( c => (c.markaVozila, c.modelVozila, c.kategorijaVozila,
+//    c.godinaProizvodnjeVozila, c.datumRegVozila, c.datumIstekaRegVozila).toString.split(",")).toArray
 
+  val spisak = spisakIsteka.map ( c => (c.markaVozila + "," + c.modelVozila + "," + c.kategorijaVozila +
+    "," + c.godinaProizvodnjeVozila + "," + c.datumRegVozila + "," + c.datumIstekaRegVozila).split(",")).toArray
 
+  val koloneTabele = Seq("Marka", "Model", "Kategorija", "Gp", "DatumReg", "DatumIstek")
+  var vozilaZaTabelu: Array[Array[Any]] = spisak.asInstanceOf[Array[Array[Any]]]
+  var tabela = new Table (vozilaZaTabelu: Array[Array[Any]], koloneTabele: Seq[String])
 
+  val zatvoriDugme = Button("Zatvori"){
+    close()
+  }
 
+  val panelGlavni = new BoxPanel(Orientation.Vertical)
 
+  panelGlavni.contents += tabelaNaslova
+  panelGlavni.contents += tabela
+  panelGlavni.contents += Swing.VStrut(50)
+  panelGlavni.contents += zatvoriDugme
+  panelGlavni.border = Swing.EmptyBorder(90, 50, 50, 50)
 
-
-
-
+  contents = panelGlavni
 
 }
